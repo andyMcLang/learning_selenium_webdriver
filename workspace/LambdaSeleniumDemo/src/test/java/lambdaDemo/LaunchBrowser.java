@@ -19,19 +19,19 @@ public class LaunchBrowser {
 	@BeforeTest
 	public void setUp() {
 		DesiredCapabilities capabilities = new DesiredCapabilities();
-		capabilities.setCapability("build", "Eka nimi");
+		capabilities.setCapability("build", "Toinen ajo");
 		capabilities.setCapability("name", "Interact with input");
-		capabilities.setCapability("platform", "Windows 11");
-		capabilities.setCapability("browserName", "Chrome");
-		capabilities.setCapability("browserVersion", "dev");
+		capabilities.setCapability("browserName", "Safari");
+		capabilities.setCapability("browserVersion", "18");
 		HashMap<String, Object> ltOptions = new HashMap<String, Object>();
 		ltOptions.put("username", "djdreviz");
 		ltOptions.put("accessKey", "LT_4dIDvGDwShj1CWwGJpI5hfFTmd2wyY11CAHFsnaavKKDhMs");
-		ltOptions.put("platformName", "Windows 11");
-		ltOptions.put("resolution", "1024x768");
+		ltOptions.put("visual", true);
+		ltOptions.put("video", true);
+		ltOptions.put("platformName", "MacOS Sequoia");
+		ltOptions.put("network", true);
 		ltOptions.put("project", "Untitled");
-		ltOptions.put("selenium_version", "3.13.0");
-		ltOptions.put("driver_version", "130.0.6683.2");
+		ltOptions.put("console", "true");
 		capabilities.setCapability("LT:Options", ltOptions);
 		try {
 			driver = new RemoteWebDriver(new URL(
@@ -53,9 +53,13 @@ public class LaunchBrowser {
 		String title = driver.getTitle();
 		System.out.println(title);
 		WebElement aInput = driver.findElement(By.id("sum1"));
+		String attribute = aInput.getAttribute("placeholder");
+		System.out.println("Placeholder value: " + attribute);
 		aInput.sendKeys("10");
 		driver.findElement(By.id("sum2")).sendKeys("15");
 		driver.findElement(By.xpath("//button[text()='Get Sum']")).click();
+		String text = driver.findElement(By.id("addmessage")).getText();
+		System.out.println("Result: " + text);
 	}
 
 	@AfterTest
