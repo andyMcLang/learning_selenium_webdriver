@@ -3,11 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="lambdaDemo.LaunchBrowser">
+      <class name="lambdaDemo.HandleAlert">
         <methods>
-          <include name="myTest"/>
+          <include name="setUp"/>
+          <include name="handleAlert"/>
+          <include name="tearDown"/>
         </methods>
-      </class> <!-- lambdaDemo.LaunchBrowser -->
+      </class> <!-- lambdaDemo.HandleAlert -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
